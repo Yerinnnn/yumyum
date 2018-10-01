@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $("#sign_ok").click(function () {
+                var sign_form = document.getElementById('sign_form')
+                $(sign_form).submit();
+            });
+        });
+    </script>
+
+    <style>
+        #header {
+            text-align: center;
+            padding: 10px;
+        }
+
+
+
+        /*전체 폼 div태그*/
+
+        #form {
+            margin-right: auto;
+            margin-left: auto;
+            width: 500px;
+            float: center;
+            background-color: #ffffff
+        }
+
+
+        #header img {
+            margin: 20px;
+        }
+
+
+        /*입력칸*/
+
+        .inputBox {
+            padding: 10px 20px;
+            margin: 3px 50px;
+            float: right;
+            width: 350px;
+            height: 25px;
+            text-align: left;
+            font-family: sans-serif;
+            font-weight: bold;
+            background: #fff;
+            color: #888;
+        }
+
+
+        /*div클래스*/
+
+        .formDiv {
+            padding: 3px;
+            width: 300px;
+            margin: 0px 0px;
+        }
+
+
+        /*span클래스*/
+
+        .formBox {
+            float: left;
+        }
+
+
+        #inputPass {
+            
+        }
+
+        #formDiv_name {
+            margin-top: 40px;
+        }
+
+
+        /*회원가입 버튼*/
+
+        .button {
+            width: 400px;
+            height: 55px;
+            border: 0px;
+            margin: 20px 50px;
+            margin-right: 0px;
+            outline: 0px;
+            background: #ff7348;
+            color: rgb(255, 255, 255);
+            float: center;
+            text-align: center;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+            font-family: sans-serif;
+            font-weight: bold;
+        }
+
+        .button:hover {
+            background-color: #ff8d6b;
+            color: rgb(77, 77, 77);
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <div id="form">
+        <div id="header">
+            <img src="logo.png" width="280px" />
+        </div>
+
+        <form id="sign_form" method="POST" action="sign_ok.php">
+            <div class="formDiv">
+                <span class="formBox">
+                    아이디
+                    <input class="inputBox" id="inputId" type="edit" name="sign_id" value="아이디를 입력하세요" style="display: block;" />
+                </span>
+            </div>
+            <div class="formDiv">
+                <span class="formBox">
+                    비밀번호
+                    <input class="inputBox" id="inputPass" type="password" name="sign_pass" value="비밀번호를 입력하세요" />
+                </span>
+            </div>
+            <div class="formDiv">
+                <span class="formBox">
+                    비밀번호 재확인
+                    <input class="inputBox" id="inputPass" type="password" name="sign_pass" value="비밀번호를 입력하세요" />
+                </span>
+            </div>
+            <div class="formDiv">
+                <span class="formBox" id="formDiv_name">
+                    이름
+                    <input class="inputBox" id="inputName" type="edit" name="sign_name" vlaue="이름을 입력하세요" />
+                </span>
+            </div>
+            <div class="formDiv">
+                <span class="formBox">
+                    생년월일
+                    <input class="inputBox" id="inputId" type="edit" name="sign_id" value="아이디를 입력하세요" style="display: block;" />
+                </span>
+            </div>
+            <div class="formDiv">
+                <span class="formBox">
+                    이메일
+                    <input class="inputBox" id="inputId" type="edit" name="sign_id" value="아이디를 입력하세요" style="display: block;" />
+                </span>
+            </div>
+            <div class="formDiv">
+                <span class="formBox">
+                    휴대전화
+                    <input class="inputBox" id="inputId" type="edit" name="sign_id" value="아이디를 입력하세요" style="display: block;" />
+                </span>
+            </div>
+            <div>
+                <input type="button" class="button" id="sign_ok" value="가입하기" />
+            </div>
+
+        </form>
+    </div>
+
+
+
+</body>
+
+</html>
