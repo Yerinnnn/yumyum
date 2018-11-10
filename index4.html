@@ -18,21 +18,21 @@
 
 
 
-
         /* banner */
 
         .banner {
-            position: relative;
-            width: 100%;
+            width: 80%;
             height: 500px;
             top: 0px;
-            margin: 0 auto;
+            margin-top: 20px;
+            margin-left: 10%;
             padding: 0;
             overflow: hidden;
+            /*하나 빼고 나머지는 안보이도록*/
         }
 
         .banner ul {
-            position: absolute;
+
             margin: 0px;
             padding: 0;
             list-style: none;
@@ -40,7 +40,8 @@
 
         .banner ul li {
             float: left;
-            width: 1280px;
+            /*한줄이 되도록*/
+            width: 80%;
             height: 500px;
             margin: 0;
             padding: 0;
@@ -54,7 +55,8 @@
         #navbar {
             overflow: hidden;
             background-color: rgb(211, 211, 211);
-            position: sticky;
+            
+            margin-left: 8%;
         }
 
         #navbar a {
@@ -62,7 +64,7 @@
             display: block;
             color: #000000;
             text-align: center;
-            padding: 24px 24px;
+            padding: 18px 24px;
             text-decoration: none;
             font-size: 17px;
         }
@@ -74,14 +76,8 @@
 
         #navbar a.active {
             background-color: rgb(255, 255, 255);
-            padding: 5px;
-            border: 5px;
             color: rgb(0, 0, 0);
-            font-weight: bold;
-        }
-
-        #navbar a.last {
-            padding: 24px 24px;
+            font-weight: lighter;
         }
 
         .content {
@@ -91,14 +87,18 @@
         .sticky {
             position: fixed;
             top: 0;
+        }
+
+        .longer {
             width: 100%;
         }
 
-        .sticky+.content {
-            padding-top: 60px;
+        
+
+
+        #chart {
+            margin-top: 30px;
         }
-
-
 
 
         /*접기기능*/
@@ -152,7 +152,6 @@
             display: table;
             margin-left: auto;
             margin-right: auto;
-            background-color: white;
         }
     </style>
 </head>
@@ -160,18 +159,21 @@
 
 
 <body>
-    <!--header-->
-    <div id="header">
 
+    <div id="header" style="text-align:center;margin-top:50px">
+        <img src="images/logo/main_logo.png" width="600px">
     </div>
+
 
     <!-- Navigation-->
-    <div id="navbar">
-        <a class="active" href="javascript:void(0)"><img src="images/logo/예린 로고1.png" width="150px"></a>
-        <a id="news" href="#chart">TOP25</a>
-        <a href="#about">Board</a>
-        <a style="float:right" class="lsat" action="login.jsp">login</a>
+    <div id="navbar" style="width:85%">
+        <a href="javascript:void(0)">HOME</a>
+        <a href="#chart">TOP 25</a>
+        <a href="#about">ABOUT</a>
+        <a style="float:right" class="active" href="">LOGIN</a>
     </div>
+
+
 
 
 
@@ -180,22 +182,22 @@
     <div class="banner">
         <ul>
             <li>
-                <img src="images/banner_flower/flower_1.png" width="100%" >
+                <img src="images/banner_flower/flower_1.png" width="100%" height="500px">
             </li>
             <li>
-                <img src="images/banner_flower/flower_2.png" width="100%" >
+                <img src="images/banner_flower/flower_2.png" width="100%" height="500px">
             </li>
             <li>
-                <img src="images/banner_flower/flower_3.png" width="100%" >
+                <img src="images/banner_flower/flower_3.png" width="100%" height="500px">
             </li>
             <li>
-                <img src="images/banner_flower/flower_4.png" width="100%" >
+                <img src="images/banner_flower/flower_4.png" width="100%" height="500px">
             </li>
             <li>
-                <img src="images/banner_flower/flower_5.png" width="100%" >
+                <img src="images/banner_flower/flower_5.png" width="100%" height="500px">
             </li>
             <li>
-                <img src="images/banner_flower/flower_6.png" width="100%" >
+                <img src="images/banner_flower/flower_6.png" width="100%" height="500px">
             </li>
         </ul>
     </div>
@@ -203,7 +205,7 @@
 
 
 
-    <!--weather-->
+    <!--weather
     <span id="weather">
         <OBJECT classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0"
             WIDTH="0" HEIGHT="0" id="naver" ALIGN="">
@@ -218,12 +220,12 @@
             width=250 height=300 type=application/x-shockwave-flash>
     </span>
 
+-->
 
 
-
-    <span>
+    <span id="chart">
         <!-- 접기기능 -->
-        <button class="collapsible" id="chart">
+        <button class="collapsible">
             <div>
                 <span class="name">짱수양꼬치</span>
                 <span class="category">양꼬치</span>
@@ -298,9 +300,9 @@
 
 
     <div id="footer">
-        <a id='facebook' href='https://www.facebook.com/'><img src="images/footer/facebook.png" width="100px" border="20px"></a>
-        <a id='instagram' href='https://www.instagram.com/'><img src="images/footer/instagram.png" width="100px" border="20px"></a>
-        <a id='google' href='https://www.google.com/'><img src="images/footer/google-plus.png" width="100px" border="20px"></a>
+        <a id='facebook' href='https://www.facebook.com/'>facebook </a>
+        <a id='instagram' href='https://www.instagram.com/'>instagram </a>
+        <a id='google' href='https://www.google.com/'>google</a>
     </div>
 
 
@@ -321,11 +323,11 @@
             //정해진 초마다 함수 실행
             rollingId = setInterval(function () {
                 rollingStart();
-            }, 5000); //다음 이미지로 롤링 애니메이션 할 시간차
+            }, 6500); //다음 이미지로 롤링 애니메이션 할 시간차
 
 
             function rollingStart() {
-                $banner.css("width", $bannerWidth * $bannerLength + "px");
+                $banner.css("width", $bannerWidth * $bannerLength + "%");
                 $banner.css("height", $bannerHeight + "px");
                 //alert(bannerHeight);
                 //배너의 좌측 위치를 옮겨 준다.
@@ -362,9 +364,11 @@
         //닿으면 sticky
         function myFunction() {
             if (window.pageYOffset >= sticky) { //pageYOFFset=상단으로부터 스크롤 된 픽셀 수
-                navbar.classList.add("sticky")
+                navbar.classList.add("sticky");
+                navbar.style(width) = "100%";
             } else {
                 navbar.classList.remove("sticky");
+                navbar.classList.remove("longer");
             }
         }
     </script>
