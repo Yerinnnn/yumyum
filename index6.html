@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Content-Type" Content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+
+
+    <title>맛나맛나</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-size: 28px;
+        }
+
+
+
+        /*Navigation*/
+
+        #navbar {
+            overflow: hidden;
+            background-color: rgb(211, 211, 211);
+            position: sticky;
+            width: 90%;
+            margin-left: 5%;
+            z-index: 1;
+        }
+
+        #navbar a {
+            float: left;
+            display: block;
+            color: #000000;
+            text-align: center;
+            padding: 18px 24px;
+            text-decoration: none;
+            font-size: 17px;
+            transition-property: background-color, color;
+            transition-duration: 0.8s;
+        }
+
+        #navbar a:hover {
+            background-color: rgb(231, 231, 231);
+            color: rgba(0, 0, 0, 0.7);
+        }
+
+        #navbar a.active {
+            background-color: rgb(231, 231, 231);
+            color: rgb(0, 0, 0);
+            font-weight: lighter;
+        }
+
+        .content {
+            padding: 16px;
+        }
+
+        .sticky {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            margin-left: 0%;
+        }
+
+        .sticky+.content {
+            padding-top: 60px;
+        }
+
+
+
+
+        /*slider*/
+
+        .mySlides {
+            display: none;
+            z-index: 2;
+            height: 400px;
+        }
+
+        .slider {
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 20px;
+            position: relative;
+            width: 90%;
+            margin-top: 20px
+        }
+
+        .slider:hover .w3-display-hover {
+            display: block
+        }
+
+        .slider:hover span.w3-display-hover {
+            display: inline-block
+        }
+
+        .sliderButton {
+            text-align: center !important;
+            padding: 0.01em 16px;
+            margin-top: 16px !important;
+            margin-bottom: 16px !important;
+            font-size: 18px !important;
+            color: #fff !important;
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translate(-50%, 0%);
+            -ms-transform: translate(-50%, 0%);
+        }
+
+        .leftButton {
+            float: left !important;
+            margin-left: 20px;
+            cursor: pointer;
+            transition-duration: 0.7s;
+        }
+
+        .rightButton {
+            float: right !important;
+            margin-right: 20px;
+            cursor: pointer;
+            transition-duration: 0.7s;
+        }
+
+        .leftButton:hover {
+            color: #b4aa50 !important
+        }
+
+        .rightButton:hover {
+            color: #b4aa50 !important
+        }
+
+        .circleButton {
+            background-color: rgb(255, 255, 255);
+            color: #fff;
+            display: inline-block;
+            width: 10px;
+            padding-left: 8px;
+            padding-right: 8px;
+            text-align: center;
+            border-radius: 50%;
+            border: 1px solid #ccc !important;
+            background-color: transparent !important;
+            height: 13px;
+            width: 13px;
+            padding: 0;
+            cursor: pointer;
+            transition-duration: 0.7s;
+        }
+
+        .circleButton:hover {
+            background-color: #fff !important;
+            cursor: pointer
+        }
+
+        .circleButtonWhite {
+            color: #000 !important;
+            background-color: #fff !important
+        }
+
+
+
+        /*접기기능*/
+
+        .chart_button {
+            background-color: #ffffff;
+            color: rgb(39, 39, 39);
+            cursor: pointer;
+            padding: 20px;
+            width: 90%;
+            border: none;
+            display: table;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: left;
+            outline: none;
+            font-size: 17px;
+            font-weight: bold;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+
+        .active,
+        .chart_button:hover {
+            background-color: rgb(255, 255, 255);
+            color: rgb(134, 134, 134);
+        }
+
+        .restaurantName {
+            font-size: 23px;
+            font-weight: bold;
+            color: rgb(39, 39, 39);
+            margin-right: 7px;
+            cursor: pointer;
+        }
+
+        .category {
+            font-size: 14px;
+            font-weight: lighter;
+            color: rgb(100, 100, 100);
+            margin-right: 7px;
+            cursor: pointer;
+        }
+
+        .restaurantAddress {
+            font-size: 18px;
+            font-weight: lighter;
+            color: rgb(39, 39, 39);
+            margin-top: 5px;
+            margin-bottom: 5px;
+            cursor: pointer;
+        }
+
+        .review {
+            font-size: 15px;
+            font-weight: 200;
+            cursor: pointer;
+            margin-top: 15px;
+            margin-left: 25px;
+            margin-bottom: 15px;
+        }
+
+        .chart_content {
+            padding: 20px;
+            width: 90%;
+            border: none;
+            display: none;
+            margin-left: 5%;
+            margin-right: auto;
+            overflow: hidden;
+            background-color: #f1f1f1;
+        }
+
+
+        #title {
+            display: block;
+            font-size: 3.5em;
+            margin-top: 0.4em;
+            margin-bottom: 0.4em;
+            margin-left: 0;
+            margin-right: 0;
+            font-weight: bold;
+        }
+
+
+
+        /*footer*/
+
+        #footer {
+            padding: 70px;
+            display: table;
+            margin-left: auto;
+            margin-right: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <!-- header -->
+    <div id="header" style="text-align:center;margin-top:50px">
+        <img src="images/logo/main_logo.png" width="600px">
+    </div>
+
+
+
+    <!-- Navigation-->
+    <div id="navbar">
+        <a href="javascript:void(0)">HOME</a>
+        <a id="news" href="#chart">TOP25</a>
+        <a href="#board">BOARD</a>
+        <a href="#about">ABOUT</a>
+        <a style="float:right" class="active" href="">Login</a>
+    </div>
+
+
+
+    <!--slider-->
+    <div class="slider">
+        <img class="mySlides" src="images/banner_food/음식1.jpg" style="width:100%">
+        <img class="mySlides" src="images/banner_food/음식2.jpg" style="width:100%">
+        <img class="mySlides" src="images/banner_food/음식3.jpg" style="width:100%">
+        <img class="mySlides" src="images/banner_food/음식4.jpg" style="width:100%">
+        <img class="mySlides" src="images/banner_food/음식5.jpg" style="width:100%">
+        <div class="sliderButton" style="width:100%;height:50%">
+            <div class="leftButton" onclick="plusDivs(-1)">&#10094;</div>
+            <div class="rightButton" onclick="plusDivs(1)">&#10095;</div>
+        </div>
+        <div class="sliderButton" style="width:100%">
+            <span class="circleButton" onclick="currentDiv(1)"></span>
+            <span class="circleButton" onclick="currentDiv(2)"></span>
+            <span class="circleButton" onclick="currentDiv(3)"></span>
+            <span class="circleButton" onclick="currentDiv(4)"></span>
+            <span class="circleButton" onclick="currentDiv(5)"></span>
+        </div>
+    </div>
+
+
+
+    <!--날씨 위젯
+    <span id="weather">
+        <OBJECT classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0"
+            WIDTH="0" HEIGHT="0" id="naver" ALIGN="">
+            <PARAM NAME=movie VALUE="http://weather.naver.com/newsnaver.swf?Data_File=http://weather.naver.com/newsnaver_data.txt">
+            <PARAM NAME=quality VALUE=high>
+            <PARAM NAME=bgcolor VALUE=#FFFFFF>
+            <EMBED src="http://weather.naver.com/newsnaver.swf?Data_File=http://weather.naver.com/newsnaver_data.txt" quality="high"
+                bgcolor="#FFFFFF" WIDTH="0" HEIGHT="0" NAME="naver" ALIGN="" TYPE="application/x-shockwave-flash" PLUGINSPAGE="http://www.macromedia.com/go/getflashplayer"></EMBED>
+        </OBJECT>
+
+
+
+        <EMBED pluginspage=http://www.macromedia.com/shockwave/download/ src=http://img.news.naver.com/image/weather/naver_w.swf
+            width=250 height=300 type=application/x-shockwave-flash>
+    </span>
+-->
+
+    <span id="chart">
+
+        <!-- 접기기능 -->
+        <button class="chart_button">
+            <div>
+                <span>
+                    <img src="images/logo/1.png" width="25px" margin-right="5px" />
+                </span>
+                <span>
+                    <span class="restaurantName">짱수양꼬치</span>
+                    <span class="category">양꼬치</span>
+                    <span class="restaurantAddress">서울 강남구 광평로51길 6-11</span>
+                    <div>
+                        <span class="review">양꼬치, 쌀국수집이 붙어 있어 같이 먹기 좋았어요</span>
+                    </div>
+                </span>
+            </div>
+        </button>
+        <div class="chart_content">
+
+            <!--댓글/좋아요-->
+
+        </div>
+
+
+        <button class="chart_button">
+            <div>
+                <span>
+                    <img src="images/logo/2.png" width="25px" margin-right="5px" />
+                </span>
+                <span>
+                    <span class="restaurantName">구찌라쿠</span>
+                    <span class="category">샤브샤브</span>
+                    <span class="restaurantAddress">서울 강남구 광평로 280 로즈데일오피스텔</span>
+                    <div>
+                        <span class="review">일본식 돈까스, 우동덮밥 등 모든 메뉴가 일품</span>
+                    </div>
+                </span>
+            </div>
+        </button>
+        <div class="chart_content">
+
+        </div>
+
+
+
+        <button class="chart_button">
+            <div>
+                <span>
+                    <img src="images/logo/3.png" width="25px" margin-right="5px" />
+                </span>
+                <span>
+                    <span class="restaurantName">안사부 짬뽕</span>
+                    <span class="category">중식</span>
+                    <span class="restaurantAddress">서울 강남구 언주로 323</span>
+                    <div>
+                        <span class="review">비주얼과 맛 모두 최고, 가성비까지 완벽한 곳</span>
+                    </div>
+                </span>
+            </div>
+        </button>
+        <div class="chart_content">
+
+        </div>
+
+    </span>
+
+
+    <div id="footer">
+        <a id='facebook' href='https://www.facebook.com/'>facebook </a>
+        <a id='instagram' href='https://www.instagram.com/'>instagram </a>
+        <a id='google' href='https://www.google.com/'>google</a>
+    </div>
+
+
+
+
+    <!--Navigation-->
+    <script>
+        window.onscroll = function () {
+            myFunction()
+        };
+
+        var navbar = document.getElementById("navbar");
+        var header = document.getElementById("header");
+        var sticky = header.offsetTop + header.offsetHeight; //sticky=header의 상단부터 픽셀 수
+
+
+        //닿으면 sticky
+        function myFunction() {
+            if (window.pageYOffset >= sticky) { //pageYOFFset=상단으로부터 스크롤 된 픽셀 수
+                navbar.classList.add("sticky")
+            } else {
+                navbar.classList.remove("sticky");
+            }
+        }
+    </script>
+
+
+
+    <!--slider-->
+    <script>
+        var slideIndex = 1;
+        showDivs(slideIndex);
+
+        function plusDivs(n) {
+            showDivs(slideIndex += n);
+        }
+
+        function currentDiv(n) {
+            showDivs(slideIndex = n);
+
+        }
+
+        function showDivs(n) {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("circleButton");
+            if (n > x.length) {
+                slideIndex = 1
+            }
+            if (n < 1) {
+                slideIndex = x.length
+            }
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" circleButtonWhite", "");
+            }
+            x[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " circleButtonWhite";
+        }
+    </script>
+
+
+
+    <!--접기기능-->
+    <script>
+        var coll = document.getElementsByClassName("chart_button");
+        var a;
+
+        for (a = 0; a < coll.length; a++) {
+            coll[a].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            });
+        }
+    </script>
+
+    <script>
+        $(window).scroll(function () { // 스크롤 이벤트가 발생할 때마다 인식
+            if ($(window).scrollTop() == $(document).height() - $(window).height()) { // 스크롤이 끝에 닿는걸 인식
+                console.log("스크롤 인식");
+                page++;
+                if (statueFilter == false) { // 필터가 안된 상태이면 내 관심사에 따라서 타임라인에 뿌려줌
+                    console.log("statueFilter false");
+                    listAll(page, keywords);
+                } else if (statueFilter == true) { // 필터가 적용되면 필터를 계산한 값을 뿌려줌
+                    listFilter(page, allData);
+                }
+                var height = $(document).scrollTop();
+                $('html, body').animate({
+                    scrollTop: height + 400
+                }, 600);
+            }
+        });
+    </script>
+
+
+
+</body>
+
+</html>

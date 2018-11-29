@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device－width" , initial-scale="1">
+
+    <title>YumYum</title>
+
+    <style type="text/css">
+        /*Navigation*/
+
+        #navbar {
+            overflow: hidden;
+            background-color: rgb(216, 83, 6);
+            font-family: 'Montserrat', sans-serif;
+            position: sticky;
+            width: 100%;
+            z-index: 1;
+        }
+
+        #navbar a {
+            float: left;
+            display: block;
+            color: #ffffff;
+            text-align: center;
+            padding: 35px 50px;
+            text-decoration: none;
+            font-size: 17px;
+            transition-property: background-color, color;
+            transition-duration: 0.5s;
+        }
+
+        #navbar a:hover {
+            color: rgba(0, 0, 0, 0.7);
+        }
+
+        #navbar a.active {
+            background-color: rgb(231, 231, 231);
+            color: rgb(0, 0, 0);
+        }
+
+        #navbar a.active:hover {
+            background-color: rgb(231, 231, 231);
+            color: rgb(216, 83, 6);
+        }
+
+        .content {
+            padding: 16px;
+        }
+
+        .sticky {
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+
+        .sticky+.content {
+            padding-top: 60px;
+        }
+
+        /*container*/
+
+        .container {
+            text-align: center;
+        }
+
+
+
+
+        a,
+        a:hover {
+
+            color: #000000;
+
+            text-decoration: none;
+
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- Navigation-->
+    <div id="navbar">
+        <a href="#header">HOME</a>
+        <a id="news" href="#chart">TOP25</a>
+        <a href="#boardTitle_list">BOARD</a>
+        <a href="#about">ABOUT</a>
+        <a style="float:right" class="active" href="">Login</a>
+    </div>
+
+    <div class="container">
+        <div class="row" style="width:90%;text-align:center; margin-left:auto; margin-right:auto;margin-top:5%">
+            <table class="table table-striped" style="text-align:center; border: 1px solid #000000;width:100%;">
+                <thead>
+                    <tr>
+                        <th style="background-color:#ffffff00; text-align: center; width:10%">번호</th>
+                        <th style="background-color:#eeeeee00; text-align: center; width:65%">제목</th>
+                        <th style="background-color:#eeeeee00; text-align: center; width:10%">작성자</th>
+                        <th style="background-color:#eeeeee00; text-align: center; width:15%">작성일</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td></td>
+                        <td>
+                            <a href="view.jsp?bbsID="></a>
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+</body>
+
+</html>

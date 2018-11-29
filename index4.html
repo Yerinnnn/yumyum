@@ -5,164 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta http-equiv="Content-Type" Content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta name="viewport" content="width=device-width, user-scalable=no">
+    <link rel="stylesheet" href="C:\Users\USER\git\yumyum\index.css">
+    <script rel="javascript" src="C:\Users\USER\git\yumyum\index.js"></script>
+
+
+
 
     <title>맛나맛나</title>
-
-    <style>
-        body {
-            margin: 0;
-            font-size: 28px;
-        }
-
-
-
-        /* banner */
-
-        .banner {
-            width: 80%;
-            height: 500px;
-            top: 0px;
-            margin-top: 20px;
-            margin-left: 10%;
-            padding: 0;
-            overflow: hidden;
-            /*하나 빼고 나머지는 안보이도록*/
-        }
-
-        .banner ul {
-
-            margin: 0px;
-            padding: 0;
-            list-style: none;
-        }
-
-        .banner ul li {
-            float: left;
-            /*한줄이 되도록*/
-            width: 80%;
-            height: 500px;
-            margin: 0;
-            padding: 0;
-        }
-
-
-
-
-        /*Navigation*/
-
-        #navbar {
-            overflow: hidden;
-            background-color: rgb(211, 211, 211);
-            
-            margin-left: 8%;
-        }
-
-        #navbar a {
-            float: left;
-            display: block;
-            color: #000000;
-            text-align: center;
-            padding: 18px 24px;
-            text-decoration: none;
-            font-size: 17px;
-        }
-
-        #navbar a:hover {
-            background-color: rgb(220, 220, 220);
-            color: rgba(0, 0, 0, 0.7);
-        }
-
-        #navbar a.active {
-            background-color: rgb(255, 255, 255);
-            color: rgb(0, 0, 0);
-            font-weight: lighter;
-        }
-
-        .content {
-            padding: 16px;
-        }
-
-        .sticky {
-            position: fixed;
-            top: 0;
-        }
-
-        .longer {
-            width: 100%;
-        }
-
-        
-
-
-        #chart {
-            margin-top: 30px;
-        }
-
-
-        /*접기기능*/
-
-        .collapsible {
-            background-color: #ffffff;
-            color: rgb(39, 39, 39);
-            cursor: pointer;
-            padding: 20px;
-            width: 60%;
-            border: none;
-            display: table;
-            margin-left: auto;
-            margin-right: auto;
-            text-align: left;
-            outline: none;
-            font-size: 17px;
-            font-weight: bold;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
-        .active,
-        .collapsible:hover {
-            background-color: rgb(255, 255, 255);
-            color: rgb(134, 134, 134);
-        }
-
-        .content {
-            padding: 20px;
-            width: 60%;
-            border: none;
-            display: none;
-            margin-left: auto;
-            margin-right: auto;
-            overflow: hidden;
-            background-color: #f1f1f1;
-        }
-
-        #title {
-            display: block;
-            font-size: 3.5em;
-            margin-top: 0.4em;
-            margin-bottom: 0.4em;
-            margin-left: 0;
-            margin-right: 0;
-            font-weight: bold;
-        }
-
-        #footer {
-            padding: 70px;
-            display: table;
-            margin-left: auto;
-            margin-right: auto;
-        }
-    </style>
 </head>
 
 
 
 <body>
-
     <div id="header" style="text-align:center;margin-top:50px">
         <img src="images/logo/main_logo.png" width="600px">
     </div>
+
 
 
     <!-- Navigation-->
@@ -175,34 +35,30 @@
 
 
 
-
-
-
-    <!--banner-->
-    <div class="banner">
+    <!--banner
+    <div id="banner">
         <ul>
             <li>
-                <img src="images/banner_flower/flower_1.png" width="100%" height="500px">
+                <img src="images/banner_flower/flower_1.png" width="100%">
             </li>
             <li>
-                <img src="images/banner_flower/flower_2.png" width="100%" height="500px">
+                <img src="images/banner_flower/flower_2.png" width="100%">
             </li>
             <li>
-                <img src="images/banner_flower/flower_3.png" width="100%" height="500px">
+                <img src="images/banner_flower/flower_3.png" width="100%">
             </li>
             <li>
-                <img src="images/banner_flower/flower_4.png" width="100%" height="500px">
+                <img src="images/banner_flower/flower_4.png" width="100%">
             </li>
             <li>
-                <img src="images/banner_flower/flower_5.png" width="100%" height="500px">
+                <img src="images/banner_flower/flower_5.png" width="100%">
             </li>
             <li>
-                <img src="images/banner_flower/flower_6.png" width="100%" height="500px">
+                <img src="images/banner_flower/flower_6.png" width="100%">
             </li>
         </ul>
     </div>
-
-
+-->
 
 
     <!--weather
@@ -219,8 +75,8 @@
         <EMBED pluginspage=http://www.macromedia.com/shockwave/download/ src=http://img.news.naver.com/image/weather/naver_w.swf
             width=250 height=300 type=application/x-shockwave-flash>
     </span>
-
 -->
+
 
 
     <span id="chart">
@@ -298,7 +154,6 @@
 
 
 
-
     <div id="footer">
         <a id='facebook' href='https://www.facebook.com/'>facebook </a>
         <a id='instagram' href='https://www.instagram.com/'>instagram </a>
@@ -307,114 +162,6 @@
 
 
 
-    <!--banner-->
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-    <script language="JavaScript">
-        $(document).ready(function () {
-            //사용할 배너
-            var $banner = $(".banner").find("ul");
-
-            var $bannerWidth = $banner.children().outerWidth(); //배너 이미지의 폭
-            var $bannerHeight = $banner.children().outerHeight(); // 높이
-            var $bannerLength = $banner.children().length; //배너 이미지의 갯수
-            var rollingId;
-
-            //정해진 초마다 함수 실행
-            rollingId = setInterval(function () {
-                rollingStart();
-            }, 6500); //다음 이미지로 롤링 애니메이션 할 시간차
-
-
-            function rollingStart() {
-                $banner.css("width", $bannerWidth * $bannerLength + "%");
-                $banner.css("height", $bannerHeight + "px");
-                //alert(bannerHeight);
-                //배너의 좌측 위치를 옮겨 준다.
-                $banner.animate({
-                    left: -$bannerWidth + "px"
-                }, 2000, function () { //숫자는 롤링 진행되는 시간이다.
-                    //첫번째 이미지를 마지막 끝에 복사(이동이 아니라 복사)해서 추가한다.
-                    $(this).append("<li>" + $(this).find("li:first").html() + "</li>");
-                    //뒤로 복사된 첫번재 이미지는 필요 없으니 삭제한다.
-                    $(this).find("li:first").remove();
-                    //다음 움직임을 위해서 배너 좌측의 위치값을 초기화 한다.
-                    $(this).css("left", 0);
-                    //이 과정을 반복하면서 계속 롤링하는 배너를 만들 수 있다.
-                });
-            }
-        });
-        //-->
-    </script>
-
-
-
-
-    <!--Navigation-->
-    <script>
-        window.onscroll = function () {
-            myFunction()
-        };
-
-        var navbar = document.getElementById("navbar");
-        var header = document.getElementById("header");
-        var sticky = header.offsetTop + header.offsetHeight; //sticky=header의 상단부터 픽셀 수
-
-
-        //닿으면 sticky
-        function myFunction() {
-            if (window.pageYOffset >= sticky) { //pageYOFFset=상단으로부터 스크롤 된 픽셀 수
-                navbar.classList.add("sticky");
-                navbar.style(width) = "100%";
-            } else {
-                navbar.classList.remove("sticky");
-                navbar.classList.remove("longer");
-            }
-        }
-    </script>
-
-
-
-
-    <!--접기기능-->
-    <script>
-        var coll = document.getElementsByClassName("collapsible");
-        var a;
-
-        for (a = 0; a < coll.length; a++) {
-            coll[a].addEventListener("click", function () {
-                this.classList.toggle("active");
-                var content = this.nextElementSibling;
-                if (content.style.display === "block") {
-                    content.style.display = "none";
-                } else {
-                    content.style.display = "block";
-                }
-            });
-        }
-    </script>
-
-
-
-
-    <script>
-        $(window).scroll(function () { // 스크롤 이벤트가 발생할 때마다 인식
-            if ($(window).scrollTop() == $(document).height() - $(window).height()) { // 스크롤이 끝에 닿는걸 인식
-                console.log("스크롤 인식");
-                page++;
-                if (statueFilter == false) { // 필터가 안된 상태이면 내 관심사에 따라서 타임라인에 뿌려줌
-                    console.log("statueFilter false");
-                    listAll(page, keywords);
-                } else if (statueFilter == true) { // 필터가 적용되면 필터를 계산한 값을 뿌려줌
-                    listFilter(page, allData);
-                }
-                var height = $(document).scrollTop();
-                $('html, body').animate({
-                    scrollTop: height + 400
-                }, 600);
-            }
-        });
-    </script>
 </body>
 
 </html>

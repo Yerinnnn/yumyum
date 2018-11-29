@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta http-equiv="Content-Type" Content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:900" rel="stylesheet">
+
+
+    <title>맛나맛나</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-size: 28px;
+        }
+
+
+
+        /*Navigation*/
+
+        #navbar {
+            overflow: hidden;
+            background-color: rgb(216, 83, 6);
+            font-family: 'Montserrat', sans-serif;
+            position: sticky;
+            width: 100%;
+            z-index: 1;
+        }
+
+        #navbar a {
+            float: left;
+            display: block;
+            color: #ffffff;
+            text-align: center;
+            padding: 35px 50px;
+            text-decoration: none;
+            font-size: 17px;
+            transition-property: background-color, color;
+            transition-duration: 0.5s;
+        }
+
+        #navbar a:hover {
+            color: rgba(0, 0, 0, 0.7);
+        }
+
+        #navbar a.active {
+            background-color: rgb(231, 231, 231);
+            color: rgb(0, 0, 0);
+        }
+
+        #navbar a.active:hover {
+            background-color: rgb(231, 231, 231);
+            color: rgb(216, 83, 6);
+        }
+
+        .content {
+            padding: 16px;
+        }
+
+        .sticky {
+            position: fixed;
+            top: 0;
+            width: 100%;
+        }
+
+        .sticky+.content {
+            padding-top: 60px;
+        }
+
+
+
+
+        /*slider*/
+
+        .mySlides {
+            display: none;
+            z-index: 2;
+            height: 500px;
+        }
+
+        .slider {
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            width: 100%;
+        }
+
+        .slider:hover .w3-display-hover {
+            display: block
+        }
+
+        .slider:hover span.w3-display-hover {
+            display: inline-block
+        }
+
+        .sliderButton {
+            text-align: center !important;
+            padding: 0.01em 16px;
+            margin-top: 16px !important;
+            margin-bottom: 16px !important;
+            font-size: 18px !important;
+            color: #fff !important;
+            position: absolute;
+            left: 50%;
+            bottom: 0;
+            transform: translate(-50%, 0%);
+            -ms-transform: translate(-50%, 0%);
+        }
+
+        .leftButton {
+            float: left !important;
+            margin-left: 20px;
+            cursor: pointer;
+            transition-duration: 0.7s;
+        }
+
+        .rightButton {
+            float: right !important;
+            margin-right: 20px;
+            cursor: pointer;
+            transition-duration: 0.7s;
+        }
+
+        .leftButton:hover {
+            color: #b4aa50 !important
+        }
+
+        .rightButton:hover {
+            color: #b4aa50 !important
+        }
+
+        .circleButton {
+            background-color: rgb(255, 255, 255);
+            color: #fff;
+            display: inline-block;
+            width: 10px;
+            padding-left: 8px;
+            padding-right: 8px;
+            text-align: center;
+            border-radius: 50%;
+            border: 1px solid #ccc !important;
+            background-color: transparent !important;
+            height: 13px;
+            width: 13px;
+            padding: 0;
+            cursor: pointer;
+        }
+
+        .circleButton:hover {
+            background-color: #fff !important;
+            cursor: pointer
+        }
+
+        .circleButtonWhite {
+            color: #000 !important;
+            background-color: #fff !important
+        }
+
+
+
+        /*접기기능*/
+        #top25-logo {
+            text-align: center;
+        }
+
+        #clock {
+            text-align: center;
+            margin-bottom: 90px;
+            font-size: 23px;
+        }
+
+        #chart {
+            padding-top:50px;
+            padding-bottom: 50px;
+            background-color: rgb(255, 255, 255);
+            padding-top: 150px;
+            padding-bottom: 150px
+        }
+
+        .chart_button {
+            background-color: rgb(255, 255, 255);
+            color: rgb(190, 190, 190);
+            cursor: pointer;
+            padding: 20px;
+            width: 90%;
+            border: none;
+            display: table;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: left;
+            outline: none;
+            font-size: 17px;
+            font-weight: bold;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            transition-property: background-color, color;
+            transition-duration: 0.6s;
+        }
+
+        .chart_button:hover {
+            background-color: rgb(255, 255, 255);
+            color: black
+        }
+
+        .restaurantName {
+            font-size: 23px;
+            font-weight: bold;
+            margin-left: 20px;
+            margin-right: 20px;
+            cursor: pointer;
+            color: black
+        }
+
+        .category {
+            font-size: 18px;
+            font-weight: lighter;
+            margin-right: 7px;
+            cursor: pointer;
+        }
+
+        .restaurantAddress {
+            font-size: 18px;
+            font-weight: lighter;
+            margin-top: 5px;
+            margin-bottom: 5px;
+            cursor: pointer;
+            float: right;
+        }
+
+        .chart_content {
+            padding: 20px;
+            width: 85%;
+            border: none;
+            display: none;
+            margin-left: auto;
+            margin-right: auto;
+            overflow: hidden;
+            background-color: #f1f1f1;
+        }
+
+
+        #title {
+            display: block;
+            font-size: 3.5em;
+            margin-top: 0.4em;
+            margin-bottom: 0.4em;
+            margin-left: 0;
+            margin-right: 0;
+            font-weight: bold;
+        }
+
+
+
+        /*board title list*/
+        #board-logo {
+            text-align: center;
+        }
+
+        #boardTitle_list {
+            padding-top:50px;
+            padding-bottom: 50px;
+            background-color: rgb(255, 168, 87);
+        }
+
+
+        /*about*/
+        #about {
+            width: 100%;
+            height: 
+        }
+
+
+
+        /*footer*/
+
+        #footer {
+            width:100%;
+            height: 200px;
+            padding: 70px;
+            display: table;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: rgb(255, 123, 0);
+        }
+    </style>
+</head>
+
+<body>
+
+
+    <!-- header -->
+    <div id="header" style="text-align:center;margin-top:50px">
+        <img src="images/logo/main_logo.png" width="700px">
+    </div>
+
+
+
+    <!-- Navigation-->
+    <div id="navbar">
+        <a href="#header">HOME</a>
+        <a id="news" href="#chart">TOP25</a>
+        <a href="#boardTitle_list">BOARD</a>
+        <a href="#about">ABOUT</a>
+        <a style="float:right" class="active" href="">Login</a>
+    </div>
+
+
+
+    <!--slider-->
+    <div class="slider">
+        <img class="mySlides" src="images/banner_food/음식1.jpg" style="width:100%">
+        <img class="mySlides" src="images/banner_food/음식2.jpg" style="width:100%">
+        <img class="mySlides" src="images/banner_food/음식3.jpg" style="width:100%">
+        <img class="mySlides" src="images/banner_food/음식4.jpg" style="width:100%">
+        <img class="mySlides" src="images/banner_food/음식5.jpg" style="width:100%">
+        <div class="sliderButton" style="width:100%;height:50%">
+            <div class="leftButton" onclick="plusDivs(-1)">&#10094;</div>
+            <div class="rightButton" onclick="plusDivs(1)">&#10095;</div>
+        </div>
+        <div class="sliderButton" style="width:100%">
+            <span class="circleButton" onclick="currentDiv(1)"></span>
+            <span class="circleButton" onclick="currentDiv(2)"></span>
+            <span class="circleButton" onclick="currentDiv(3)"></span>
+            <span class="circleButton" onclick="currentDiv(4)"></span>
+            <span class="circleButton" onclick="currentDiv(5)"></span>
+        </div>
+    </div>
+
+
+
+    <!--날씨 위젯
+    <span id="weather">
+        <OBJECT classid="clsid:D27CDB6E-AE6D-11cf-96B8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=6,0,0,0"
+            WIDTH="0" HEIGHT="0" id="naver" ALIGN="">
+            <PARAM NAME=movie VALUE="http://weather.naver.com/newsnaver.swf?Data_File=http://weather.naver.com/newsnaver_data.txt">
+            <PARAM NAME=quality VALUE=high>
+            <PARAM NAME=bgcolor VALUE=#FFFFFF>
+            <EMBED src="http://weather.naver.com/newsnaver.swf?Data_File=http://weather.naver.com/newsnaver_data.txt" quality="high"
+                bgcolor="#FFFFFF" WIDTH="0" HEIGHT="0" NAME="naver" ALIGN="" TYPE="application/x-shockwave-flash" PLUGINSPAGE="http://www.macromedia.com/go/getflashplayer"></EMBED>
+        </OBJECT>
+
+
+
+        <EMBED pluginspage=http://www.macromedia.com/shockwave/download/ src=http://img.news.naver.com/image/weather/naver_w.swf
+            width=250 height=300 type=application/x-shockwave-flash>
+    </span>
+-->
+
+    <div id="chart">
+        <div id="top25-logo"><img src="images/logo/top25.png" style="width:550px"/></div>
+        <div id="clock"></div>
+
+        <!-- 접기기능 -->
+        <button class="chart_button">
+            <div>
+                <span>
+                    <img src="images/logo/1.png" width="25px" margin-right="5px" />
+                </span>
+                <span>
+                    <span class="restaurantName">짱수양꼬치</span>
+                    <span class="category">양꼬치</span>
+                    <span class="restaurantAddress">서울 강남구 광평로51길 6-11</span>
+                    
+                </span>
+            </div>
+        </button>
+        <div class="chart_content">
+
+            <!--댓글/좋아요-->
+
+        </div>
+
+
+        <button class="chart_button">
+            <div>
+                <span>
+                    <img src="images/logo/2.png" width="25px" margin-right="5px" />
+                </span>
+                <span>
+                    <span class="restaurantName">구찌라쿠</span>
+                    <span class="category">샤브샤브</span>
+                    <span class="restaurantAddress">서울 강남구 광평로 280 로즈데일오피스텔</span>
+                    
+                </span>
+            </div>
+        </button>
+        <div class="chart_content">
+
+        </div>
+
+
+
+        <button class="chart_button">
+            <div>
+                <span>
+                    <img src="images/logo/3.png" width="25px" margin-right="5px" />
+                </span>
+                <span>
+                    <span class="restaurantName">안사부 짬뽕</span>
+                    <span class="category">중식</span>
+                    <span class="restaurantAddress">서울 강남구 언주로 323</span>
+                    
+                </span>
+            </div>
+        </button>
+        <div class="chart_content">
+
+        </div>
+
+
+
+
+
+        <button class="chart_button">
+                <div>
+                    <span>
+                        <img src="images/logo/4.png" width="25px" margin-right="5px" />
+                    </span>
+                    <span>
+                        <span class="restaurantName">안사부 짬뽕</span>
+                        <span class="category">중식</span>
+                        <span class="restaurantAddress">서울 강남구 언주로 323</span>
+                       
+                    </span>
+                </div>
+            </button>
+            <div class="chart_content">
+    
+            </div>
+            <button class="chart_button">
+                    <div>
+                        <span>
+                            <img src="images/logo/3.png" width="25px" margin-right="5px" />
+                        </span>
+                        <span>
+                            <span class="restaurantName">안사부 짬뽕</span>
+                            <span class="category">중식</span>
+                            <span class="restaurantAddress">서울 강남구 언주로 323</span>
+                            
+                        </span>
+                    </div>
+                </button>
+                <div class="chart_content">
+        
+                </div>
+                <button class="chart_button">
+                        <div>
+                            <span>
+                                <img src="images/logo/3.png" width="25px" margin-right="5px" />
+                            </span>
+                            <span>
+                                <span class="restaurantName">안사부 짬뽕</span>
+                                <span class="category">중식</span>
+                                <span class="restaurantAddress">서울 강남구 언주로 323</span>
+                                
+                            </span>
+                        </div>
+                    </button>
+                    <div class="chart_content">
+            
+                    </div>
+
+    </div>
+
+    <div id="boardTitle_list">
+            <div id="board-logo"><img src="images/logo/board.png" style="width:650px"/></div>
+        <span class="boardTitle"></span>
+        <span class="boardTitle"></span>
+    </div>
+
+    
+<div id="about">
+
+</div>
+
+
+
+    <div id="footer">
+        <span id="sns-link"><a id='facebook' href='https://www.facebook.com/'>facebook </a>
+        <a id='instagram' href='https://www.instagram.com/'>instagram </a>
+        <a id='google' href='https://www.google.com/'>google</a></span>
+        <span></span>
+    </div>
+
+
+
+
+    <!--Navigation-->
+    <script>
+        window.onscroll = function () {
+            myFunction()
+        };
+
+        var navbar = document.getElementById("navbar");
+        var header = document.getElementById("header");
+        var sticky = header.offsetTop + header.offsetHeight; //sticky=header의 상단부터 픽셀 수
+
+
+        //닿으면 sticky
+        function myFunction() {
+            if (window.pageYOffset >= sticky) { //pageYOFFset=상단으로부터 스크롤 된 픽셀 수
+                navbar.classList.add("sticky")
+            } else {
+                navbar.classList.remove("sticky");
+            }
+        }
+    </script>
+
+
+
+    <!--slider-->
+    <script>
+        var slideIndex = 1;
+        showDivs(slideIndex);
+
+        function plusDivs(n) {
+            showDivs(slideIndex += n);
+        }
+
+        function currentDiv(n) {
+            showDivs(slideIndex = n);
+
+        }
+
+        function showDivs(n) {
+            var i;
+            var x = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("circleButton");
+            if (n > x.length) {
+                slideIndex = 1
+            }
+            if (n < 1) {
+                slideIndex = x.length
+            }
+            for (i = 0; i < x.length; i++) {
+                x[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" circleButtonWhite", "");
+            }
+            x[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " circleButtonWhite";
+        }
+    </script>
+
+
+
+<!--현재시간-->
+<script type="text/javascript">
+    function printTime(){
+        var clock = document.getElementById("clock");  //id값인 <span>태그를 변수clock에 저장
+        var now = new Date(); //객체 생성
+        clock.innerHTML =     //태그내부에 태그 설정
+         now.getFullYear() + "/"+
+         (now.getMonth()+1) + "/"+
+         now.getDate()+" "+
+         now.getHours()+":"+
+         now.getMinutes()+":"+
+         now.getSeconds();
+        setTimeout("printTime()", 1000);  //1초마다 printTime()함수 호출
+       }
+       window.onload = function(){ //html 로딩시 콜백함수 호출
+        printTime();
+       }
+    </script>
+
+
+
+    <!--접기기능-->
+    <script>
+        var coll = document.getElementsByClassName("chart_button");
+        var a;
+
+        for (a = 0; a < coll.length; a++) {
+            coll[a].addEventListener("click", function () {
+                this.classList.toggle("active");
+                var content = this.nextElementSibling;
+                if (content.style.display === "block") {
+                    content.style.display = "none";
+                } else {
+                    content.style.display = "block";
+                }
+            });
+        }
+    </script>
+
+    <script>
+        $(window).scroll(function () { // 스크롤 이벤트가 발생할 때마다 인식
+            if ($(window).scrollTop() == $(document).height() - $(window).height()) { // 스크롤이 끝에 닿는걸 인식
+                console.log("스크롤 인식");
+                page++;
+                if (statueFilter == false) { // 필터가 안된 상태이면 내 관심사에 따라서 타임라인에 뿌려줌
+                    console.log("statueFilter false");
+                    listAll(page, keywords);
+                } else if (statueFilter == true) { // 필터가 적용되면 필터를 계산한 값을 뿌려줌
+                    listFilter(page, allData);
+                }
+                var height = $(document).scrollTop();
+                $('html, body').animate({
+                    scrollTop: height + 400
+                }, 600);
+            }
+        });
+    </script>
+
+
+
+</body>
+
+</html>
